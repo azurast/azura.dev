@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { ChakraProvider, ColorModeProvider, useColorMode } from "@chakra-ui/react";
 import { Global, css } from "@emotion/react";
 import { prismLightTheme, prismDarkTheme } from "../styles/prism";
+import theme from "/styles/theme";
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode()
@@ -38,7 +39,7 @@ const GlobalStyle = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <ColorModeProvider
         options={{
           initialColorMode: "light",

@@ -11,6 +11,7 @@ import DarkModeSwitcher from '../components/DarkModeSwitcher'
 
 const Container = ({ children }) => {
   const { colorMode } = useColorMode()
+
   const bgColor = {
     light: 'white',
     dark: '#171717'
@@ -21,8 +22,8 @@ const Container = ({ children }) => {
   }
 
   const navHoverBg = {
-    light: 'gray.600',
-    dark: 'gray.300',
+    light: 'gray.300',
+    dark: 'gray.600'
   }
 
   const StickyNav = styled(Flex)`
