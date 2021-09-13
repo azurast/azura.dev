@@ -8,13 +8,14 @@ import {
 import NextLink from "next/link"
 import styled from "@emotion/styled";
 import DarkModeSwitcher from '../components/DarkModeSwitcher'
+import theme from '../styles/theme';
 
 const Container = ({ children }) => {
   const { colorMode } = useColorMode()
 
   const bgColor = {
     light: 'white',
-    dark: '#171717'
+    dark: theme.colors.dark
   }
   const color = {
     light: 'black',

@@ -11,6 +11,10 @@ import {
 } from '@chakra-ui/react';
 import { jsx } from "@emotion/react";
 import NextLink from 'next/link'
+import theme from "../styles/theme";
+
+const accentThemeColor = theme.colors.accent;
+const secondaryThemeColor = theme.colors.secondary;
 
 const CustomLink = (props) => {
   const { colorMode } = useColorMode()
@@ -58,50 +62,54 @@ const Quote = (props) => {
   )
 }
 
-const DocsHeading = (props) => (
-  <Heading
-    css={{
-      scrollMarginTop: '100px',
-      scrollSnapMargin: '100px', // Safari
-      '&[id]': {
-        pointerEvents: 'none'
-      },
-      '&[id]:before': {
-        display: 'block',
-        height: ' 6rem',
-        marginTop: '-6rem',
-        visibility: 'hidden',
-        content: `""`
-      },
-      '&[id]:hover a': { opacity: 1 }
-    }}
-    {...props}
-    mb="1em"
-    mt="2em"
-  >
-    <Box pointerEvents="auto">
-      {props.children}
-      {props.id && (
-        <Box
-          aria-label="anchor"
-          as="a"
-          color="blue.500"
-          fontWeight="normal"
-          outline="none"
-          _focus={{
-            opacity: 1,
-            boxShadow: 'outline'
+const DocsHeading = (props) => {
+  const { colorMode } = useColorMode()
+  return (
+      <Heading
+          css={{
+            color: secondaryThemeColor[colorMode],
+            scrollMarginTop: '100px',
+            scrollSnapMargin: '100px', // Safari
+            '&[id]': {
+              pointerEvents: 'none'
+            },
+            '&[id]:before': {
+              display: 'block',
+              height: ' 6rem',
+              marginTop: '-6rem',
+              visibility: 'hidden',
+              content: `""`
+            },
+            '&[id]:hover a': { opacity: 1 }
           }}
-          opacity="0"
-          ml="0.375rem"
-          href={`#${props.id}`}
-        >
-          #
+          {...props}
+          mb="1em"
+          mt="2em"
+      >
+        <Box pointerEvents="auto">
+          {props.children}
+          {props.id && (
+              <Box
+                  aria-label="anchor"
+                  as="a"
+                  color="yellow.400"
+                  fontWeight="normal"
+                  outline="none"
+                  _focus={{
+                    opacity: 1,
+                    boxShadow: 'outline'
+                  }}
+                  opacity="0"
+                  ml="0.375rem"
+                  href={`#${props.id}`}
+              >
+                #
+              </Box>
+          )}
         </Box>
-      )}
-    </Box>
-  </Heading>
-)
+      </Heading>
+  )
+}
 
 const Hr = () => {
   const { colorMode } = useColorMode()
@@ -114,14 +122,14 @@ const Hr = () => {
 }
 
 const MDXComponents = {
-  h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
+  h1: (props) => <Heading as="h1" size="xl" my={4}  {...props} />,
   h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
   h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
   h4: (props) => <DocsHeading as="h4" size="sm" fontWeight="bold" {...props} />,
   h5: (props) => <DocsHeading as="h5" size="sm" fontWeight="bold" {...props} />,
   h6: (props) => <DocsHeading as="h6" size="xs" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
-    <Code colorScheme="blue" fontSize="0.84em" {...props} />
+    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
   ),
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,

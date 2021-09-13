@@ -10,21 +10,24 @@ import {
   Avatar
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-
 import Container from '../components/Container'
+import theme from "../styles/theme"
 
 export default function BlogLayout({ children, frontMatter }) {
   const { colorMode } = useColorMode()
-  const textColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  }
+
+  const secondaryTextColor = theme.colors.colorSecondary;
+  const accentTextColor = theme.colors.accent;
+
   const router = useRouter()
   const slug = router.asPath.replace('/blog', '')
   return (
     <Container>
       <Head>
         <title>{slug} - Blog - Azura Sakan Taufik</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        </style>
       </Head>
       <Stack
         as="article"
@@ -43,7 +46,7 @@ export default function BlogLayout({ children, frontMatter }) {
           maxWidth="700px"
           w="100%"
         >
-          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
+          <Heading letterSpacing="tight" mb={2} as="h1" size="2xl" color={accentTextColor[colorMode]}>
             {frontMatter.title}
           </Heading>
           <Flex
@@ -61,7 +64,7 @@ export default function BlogLayout({ children, frontMatter }) {
                 src="../images/profile.jpg"
                 mr={2}
               />
-              <Text fontSize="sm" color={textColor[colorMode]}>
+              <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
                 {frontMatter.by}
                 {'Azura Sakan Taufik / '}
                 {format(parseISO(frontMatter.publishedAt), 'MMMM dd, yyyy')}

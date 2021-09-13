@@ -26,12 +26,12 @@ const mySkills = [
   {
     text: 'Swift',
     icon: SiSwift,
-    color: 'orange.500'
+    color: 'orange.400'
   },
   {
     text: 'SwiftUI',
     icon: FaSwift,
-    color: 'blue.500'
+    color: 'blue.400'
   },
   {
     text: 'Flutter',
@@ -46,7 +46,7 @@ const mySkills = [
   {
     text: 'HTML',
     icon: SiHtml5,
-    color: 'orange.500'
+    color: 'orange.400'
   },
   {
     text: 'CSS',
@@ -61,7 +61,7 @@ const mySkills = [
   {
     text: 'Next.js',
     icon: SiNextDotJs,
-    color: 'gray.600'
+    color: 'teal.500'
   },
   {
     text: 'C#',
@@ -77,7 +77,7 @@ const mySkills = [
 
 const Skills = () => {
   return (
-    <SimpleGrid columns={[5, null, 10]} gap={6} m="1.5rem auto">
+    <SimpleGrid columns={[7, null, 10]} gap={6} m="1.5rem 0">
       {
         mySkills.map((skill) => {
           return (

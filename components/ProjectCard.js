@@ -32,7 +32,7 @@ const ProjectCard = () => {
       transition="transform 125ms ease-in-out"
       _hover={{
         transform: "scale(1.0250)",
-        boxShadow: "lg"
+        boxShadow: "md"
       }}
     >
       <Image src={property.imageUrl} alt={property.imageAlt} />

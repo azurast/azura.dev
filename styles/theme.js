@@ -2,11 +2,19 @@ import { extendTheme, theme as chakraTheme } from "@chakra-ui/react"
 
 const theme = extendTheme({
   fonts: {
-    heading: 'Work Sans, Inter, -apple-system, sans-serif'
+    heading: 'Poppins, Inter, -apple-system, sans-serif',
+    body: 'IBM Plex Sans, Inter, -apple-system, sans-serif',
   },
   colors: {
-    accent: '#ee438a',
-    secondary: '#4361ee',
+    accent: {
+      light: '#4362ee',
+      dark: '#4e6df5'
+    },
+    secondary: {
+      light: '#ee2074',
+      dark: '#ee438a'
+    },
+    dark: '#1A202C',
     colorSecondary : {
       light: 'gray.700',
       dark: 'gray.400'
