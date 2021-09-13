@@ -14,8 +14,6 @@ import { useRouter } from 'next/router'
 import Container from '../components/Container'
 
 export default function BlogLayout({ children, frontMatter }) {
-  console.log('===children', children)
-  console.log('===frontMatter', frontMatter)
   const { colorMode } = useColorMode()
   const textColor = {
     light: 'gray.700',
@@ -26,7 +24,7 @@ export default function BlogLayout({ children, frontMatter }) {
   return (
     <Container>
       <Head>
-        <title>${slug} - Blog - Azura Sakan Taufik</title>
+        <title>{slug} - Blog - Azura Sakan Taufik</title>
       </Head>
       <Stack
         as="article"

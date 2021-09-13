@@ -1,25 +1,49 @@
 ---
-title: 'My First Post'
-publishedAt: '2021-09-12'
-summary: 'Welcome to azura.dev, this will be my first mdx blog'
+title: 'GraphQL For iOS Developers'
+publishedAt: '2021-09-13'
+summary: 'Lets take a peek at this query language'
 ---
 
-# GFM
+# What is GraphQL?
 
-## Autolink literals
+- **API standard**
+- **query language** for APIs
+- fetching & updating data in a **declarative** manner
 
-www.example.com, https://example.com, and contact@example.com.
+## REST API vs GraphQL
 
-## Strikethrough
+- If you need different data for differen screen, you have to adjust the API over and over again.
+- It's not really scalable if you want to make changes frequently.
+- In REST we typically use different HTTP methods such as **POST, GET, PUT, DELETE.**
+- GraphQL doesn't care about the transport layer.
+- You are always sending a POST request to the server.
+- The server will resolve the query for you.
+- In the client side we can specify what you need
 
-~one~ or ~~two~~ tildes.
+**IMPORTANT QUERY CONCEPT**
+1. Queries : Only read data
+2. Mutations : write and read data
 
-## Table
+## Apollo
 
-| a | b  |  c |  d  |
-| - | :- | -: | :-: |
+1. **Static Type Generation**
+    - At compile time, the apollo client will look at all the  queries that are being sent over to the server and it's gonna generate a corresponding Swift types for that.
+    - Thus it provides security that all your data needs are always going to be fulfilled. We no longer need optional properties to prevent crashing
+2. **Caching**
+    - Apollo will maintain a normalized cache inside our app, so it will store all the data & we can specify policies whether you want to make request to a network or cache. This keeps the data consistent.
+    - Backend → Cache
+3. **Query Watching**
+    - Automatic UI updates inside your app  when there are data changes (i assume its like event listener?)
+    - Don't need to use callbacks to update the UI manually.
 
-## Tasklist
+## Where do I start?
 
-* [ ] to do
-* [x] done
+**Steps**
+
+1. pod install
+2. download schema json
+schema is like a contract between the client and the server, and everyone needs to adhere to that.
+3. configure xcode build phase
+invoke a tool that is going to look at al your graph to your queries and generate the coressponding Swift types for you.
+
+`test 1234 inline code var x`
