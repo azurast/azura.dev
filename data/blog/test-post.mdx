@@ -4,46 +4,100 @@ publishedAt: '2021-09-13'
 summary: 'Lets take a peek at this query language'
 ---
 
-## What is GraphQL?
+Day 1 of my own Hackerrank Challenge. I'm planning to do at least one problem each day for the 100 days, doesn't really have to be consecutive, though it'd be great If can, and write how I came up with the solution. I think this could be a great way to up-skill both my programming & technical writing skills. I will try to my best ability to solve it myself first. If can't then I will tell you guys & try to review other people's solution together.
 
-- **API standard**
-- **query language** for APIs
-- fetching & updating data in a **declarative** manner
+**P.S** I've been using Swift for iOS development for awhile now, solving logical problems that revolves around the basic concepts of Swift is still somehwat new to me. I'm used to using Swift in an OOP environment so this will be a challenge. I'm excited to learn and discover more about this language through this journey. With that in mind, let's hop on this journey with me! 🙋
 
-## REST API vs GraphQL
+Today I solved the [2D Array - DS](https://www.hackerrank.com/challenges/2d-array/problem) problem.
 
-- If you need different data for differen screen, you have to adjust the API over and over again.
-- It's not really scalable if you want to make changes frequently.
-- In REST we typically use different HTTP methods such as **POST, GET, PUT, DELETE.**
-- GraphQL doesn't care about the transport layer.
-- You are always sending a POST request to the server.
-- The server will resolve the query for you.
-- In the client side we can specify what you need
+**Overview**
+Level : Easy
+Max Score :  15 pts
+Test Cases Passed : 9/9
+My Score : 15 pts
 
-**IMPORTANT QUERY CONCEPT**
-1. Queries : Only read data
-2. Mutations : write and read data
+**Problem**
 
-## Apollo
+- Given an 6x6 2D Matrix, we can find 16 different hourglass pattern like this
 
-1. **Static Type Generation**
-    - At compile time, the apollo client will look at all the  queries that are being sent over to the server and it's gonna generate a corresponding Swift types for that.
-    - Thus it provides security that all your data needs are always going to be fulfilled. We no longer need optional properties to prevent crashing
-2. **Caching**
-    - Apollo will maintain a normalized cache inside our app, so it will store all the data & we can specify policies whether you want to make request to a network or cache. This keeps the data consistent.
-    - Backend → Cache
-3. **Query Watching**
-    - Automatic UI updates inside your app  when there are data changes (i assume its like event listener?)
-    - Don't need to use callbacks to update the UI manually.
+```swift
+a b c
+  d
+e f g
+```
 
-## Where do I start?
+**Find**
 
-**Steps**
+Find the sum of all 16 hourglasses and return the highest sum.
 
-1. pod install
-2. download schema json
-schema is like a contract between the client and the server, and everyone needs to adhere to that.
-3. configure xcode build phase
-invoke a tool that is going to look at al your graph to your queries and generate the coressponding Swift types for you.
+**Let's Define**
 
-`test 1234 inline code var x`
+- Input will be a 2D, 6x6 array
+- Output will be an integer
+
+Since I'm a fresh graduate ✨ out of uni, and for... the last 4 semesters we're focused on the other parts of programming, like developing a game, mobile apps, websites, so I'm kind of rusty in this area. I initially tried to solve the problem by coding right away but after 15 minutes in and starting to feel like I have no way out, I resolved to writing and breaking down what I know.
+
+I'll show you my thought process through my notes
+
+<!-- <Image -->
+<!--   alt="First iter" -->
+<!--   src="https://images.unsplash.com/photo-1631621451042-522ca13a73f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80" -->
+<!--   width={700} -->
+<!--   height={1440} -->
+<!--   /> -->
+
+<!-- ![Test](https://images.unsplash.com/photo-1631621451042-522ca13a73f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80) -->
+
+Step 1 : Draw the Matrix
+
+Since the matrix was always going to be 6 by 6, I tried drawing it fully and use the first 'hourglass' as a starter. I ended up with the right side and start with the index. But somehow it wasn't clear enough for me, so I tried doing the whole matrix with all the rows and columns index written out. I was like 30 minutes in at this point and as you can see, I was starting to feel frustrated witht that scribble on the bottom left ahaha. But, through this I learned something important.
+
+<!-- ![Screen Shot 2021-08-14 at 10.07.05.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cbb36d9c-dae5-4daa-883f-822f51000c46/Screen_Shot_2021-08-14_at_10.07.05.png) -->
+
+Step 2 : Draw the WHOLE Matrix.
+
+I learned the only possible starting positions to achieve this hourglass shape was if we start on column 1 through 4 and row 0 through 3.  This makes sense because the problem states there are 16 different hourglass shapes. With this information we confirm the right starting points. This also points out where I did I go wrong with my previous drawing. I tried starting at  `0,0` while I should have start at `0,1` . Now that we know our starting index is, we just need to get information to complete the hourglass.
+
+<!-- ![Screen Shot 2021-08-14 at 10.07.19.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/706276cd-4cd7-42ea-b4ce-a0183c05ee5e/Screen_Shot_2021-08-14_at_10.07.19.png) -->
+
+Step 3 : Understanding the Hourglass
+
+So I drew another sketch that represents a single hourglass, this time, without the numbered index, i subtitued them into variables `r` for rows and `c` for columns. The blue circle is the index we are at. And after that it was clear what we need, and this is the code solution that I came up with.
+
+```swift
+var arr = [[1, 1, 1, 0, 0, 0], [0, 1, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0], [0, 0, 2, 4, 4, 0], [0, 0, 0, 2, 0, 0], [0, 0, 1, 2, 4, 0]]
+
+var arrayOfSum : [Int] = []
+
+for row in 0..<arr.count {
+    if (row >= 0 && row <= 3) {
+        for col in 0..<arr.count {
+            if (col > 0 && col < 5) {
+                print ("row \(row) column \(col)")
+                let a = arr[row][col-1]
+                let b = arr[row][col]
+                let c = arr[row][col+1]
+                let d = arr[row+1][col]
+                let e = arr[row+2][col-1]
+                let f = arr[row+2][col]
+                let g = arr[row+2][col+1]
+                let sum = a + b + c + d + e + f + g
+                arrayOfSum.append(sum)
+            }
+        }
+    }
+}
+
+print("array of sum \(arrayOfSum)")
+print("max = \(String(describing: arrayOfSum.max()))")
+```
+
+**Lesson Learned**
+
+- Boy I think this took me a good 1 and a half hour, but it's okay. It's a start.
+- When I submitted my code, I passed all the test cases, which was a first 🥺 , I got an euphoria I never really felt before, this was the first time I truly solved a Hackerrank problem without asking Google for hints!
+- Don't even try coding without truly understanding what the problem first. You'll end up wasting time going back and forth. It's okay to set out a few minutes to truly grasp what is asked until you truly understand it.
+- I learned a bit more about the for loop and feel more confident in using it now.
+- I refreshed my understanding of when to use let & var and their differences.
+
+See you on Day 2!

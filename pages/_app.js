@@ -23,6 +23,7 @@ const GlobalStyle = ({ children }) => {
           html {
             min-width: 356px;
             scroll-behavior: smooth;
+            background: ${colorMode === 'light' ? 'white' : theme.colors.dark};
           }
           #__next {
             display: flex;

@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { jsx } from "@emotion/react";
 import NextLink from 'next/link'
+import Image from "next/image"
 import theme from "../styles/theme";
 
 const accentThemeColor = theme.colors.accent;
@@ -129,7 +130,7 @@ const MDXComponents = {
   h5: (props) => <DocsHeading as="h5" size="sm" fontWeight="bold" {...props} />,
   h6: (props) => <DocsHeading as="h6" size="xs" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
-    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
+    <Code colorScheme="purple" fontSize="0.84em" {...props} />
   ),
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
@@ -139,6 +140,8 @@ const MDXComponents = {
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
   blockquote: Quote,
+  Image,
+  // img: (props) => <Image {...props} />
 }
 
 export { CustomLink }

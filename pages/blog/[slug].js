@@ -6,7 +6,7 @@ import MDXComponents from "../../components/MDXComponents";
 export default function Blog({ source, frontMatter }) {
   return(
     <BlogLayout frontMatter={frontMatter}>
-      <MDXRemote {...source} components={MDXComponents}/>
+      <MDXRemote {...source} components={{...MDXComponents}}/>
     </BlogLayout>
   )
 }

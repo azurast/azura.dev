@@ -3,7 +3,7 @@ import { extendTheme, theme as chakraTheme } from "@chakra-ui/react"
 const theme = extendTheme({
   fonts: {
     heading: 'Poppins, Inter, -apple-system, sans-serif',
-    body: 'IBM Plex Sans, Inter, -apple-system, sans-serif',
+    // body: 'IBM Plex Sans, Inter, -apple-system, sans-serif',
   },
   colors: {
     accent: {
@@ -12,7 +12,7 @@ const theme = extendTheme({
     },
     secondary: {
       light: '#ee2074',
-      dark: '#ee438a'
+      dark: '#f1478e'
     },
     dark: '#1A202C',
     colorSecondary : {
