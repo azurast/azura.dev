@@ -23,7 +23,7 @@ const Container = ({ children }) => {
   }
 
   const navHoverBg = {
-    light: 'gray.300',
+    light: 'gray.100',
     dark: 'gray.600'
   }
 
@@ -61,6 +61,11 @@ const Container = ({ children }) => {
           <NextLink href="/blog" passHref>
             <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>
               Blog
+            </Button>
+          </NextLink>
+          <NextLink href="/projects" passHref>
+            <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>
+              Projects
             </Button>
           </NextLink>
         </Box>

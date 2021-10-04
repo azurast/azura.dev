@@ -19,59 +19,59 @@ import {
   FaSwift
 } from "react-icons/fa";
 import Head from "next/head";
-import { SimpleGrid, Box, Icon, Tooltip } from "@chakra-ui/react";
+import { SimpleGrid, Box, Icon, Tooltip, Button, Badge } from "@chakra-ui/react";
 import Container from "./Container";
 
 const mySkills = [
   {
     text: 'Swift',
     icon: SiSwift,
-    color: 'orange.400'
+    color: 'brandTertiary.400'
   },
   {
     text: 'SwiftUI',
     icon: FaSwift,
-    color: 'blue.400'
+    color: 'brandPrimary.400'
   },
   {
     text: 'Flutter',
     icon: SiFlutter,
-    color: 'blue.500'
+    color: 'brandSecondary.400'
   },
   {
     text: 'JavaScript ES6+',
     icon: SiJavascript,
-    color: 'yellow.400'
+    color: 'brandTertiary.400'
   },
   {
     text: 'HTML',
     icon: SiHtml5,
-    color: 'orange.400'
+    color: 'brandSecondary.400'
   },
   {
     text: 'CSS',
     icon: SiCss3,
-    color: 'blue.500'
+    color: 'brandPrimary.400'
   },
   {
     text: 'React',
     icon: SiReact,
-    color: 'cyan.500'
+    color: 'brandSecondary.400'
   },
   {
     text: 'Next.js',
     icon: SiNextDotJs,
-    color: 'teal.500'
+    color: 'brandTertiary.400'
   },
   {
     text: 'C#',
     icon: SiCsharp,
-    color: 'purple.500'
+    color: 'brandPrimary.400'
   },
   {
     text: 'Unity',
     icon: SiUnity,
-    color: 'gray.600'
+    color: 'brandSecondary.400'
   },
 ]
 

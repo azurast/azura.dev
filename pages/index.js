@@ -6,7 +6,8 @@ import {
   Text,
   Flex,
   Stack,
-  SimpleGrid
+  SimpleGrid,
+  Button, Center
 } from '@chakra-ui/react'
 import Container from "../components/Container";
 import Skills from "../components/Skills";
@@ -67,7 +68,7 @@ export default function Index() {
           <Skills/>
           <Heading as="h3" size="md" my={2}>What I've been up to</Heading>
           <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Take a look at some of the applications I've build over the years.</Text>
-          <SimpleGrid columns={[1, null, 2]} gap={6} m="1.5rem 0">
+          <SimpleGrid columns={[1, null,1]} gap={6} m="1.5rem 0">
             <ProjectCard/>
             <ProjectCard/>
           </SimpleGrid>

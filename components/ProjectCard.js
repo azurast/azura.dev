@@ -1,5 +1,5 @@
 import React from "react"
-import {Box, Image, Badge, useColorMode} from "@chakra-ui/react"
+import {Box, Image, Badge, useColorMode, HStack, Button} from "@chakra-ui/react"
 import theme from "../styles/theme";
 
 const ProjectCard = () => {
@@ -23,26 +23,31 @@ const ProjectCard = () => {
   }
 
   return (
-    <Box
-      maxW="sm"
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      borderColor={borderColor[colorMode]}
-      transition="transform 125ms ease-in-out"
+    <HStack
+      transition="transform 225ms ease-in-out"
       _hover={{
-        transform: "scale(1.0250)",
-        boxShadow: "md"
+        transform: "scale(1.0150)"
       }}
     >
-      <Image src={property.imageUrl} alt={property.imageAlt} />
+      <Box
+        maxW="sm"
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+        borderColor={borderColor[colorMode]}
+      >
+        <Image src={property.imageUrl} alt={property.imageAlt} />
+      </Box>
       <Box p="6">
         <Box
           mt="1"
-          fontWeight="semibold"
+          fontWeight="bold"
           as="h4"
           lineHeight="tight"
           isTruncated
+          color={theme.colors.accent[colorMode]}
+          fontFamily={theme.fonts.heading}
+          fontSize='24'
         >
           {property.title}
         </Box>
@@ -54,51 +59,16 @@ const ProjectCard = () => {
         >
           {property.subtitle}
         </Box>
-        <Box d="flex" alignItems="baseline" mt="1">
-          <Badge borderRadius="full" px="2" colorScheme="blue">
-            SwiftUI
-          </Badge>
+        <Box d="flex" alignItems="baseline" mt="2">
+          {/*<Badge borderRadius="full" px="2" colorScheme="brandPrimary">*/}
+          {/*  SwiftUI*/}
+          {/*</Badge>*/}
+          <Button colorScheme="brandSecondary" variant="link">
+            View project →
+          </Button>
         </Box>
-        </Box>
-    </Box>
-    // <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" >
-    //   <Image src={property.imageUrl} alt={property.imageAlt} />
-    //   <Box p="6">
-    //     <Box d="flex" alignItems="baseline">
-    //       <Badge borderRadius="full" px="2" colorScheme="teal">
-    //         New
-    //       </Badge>
-    //       <Box
-    //         color="gray.500"
-    //         fontWeight="semibold"
-    //         letterSpacing="wide"
-    //         fontSize="xs"
-    //         textTransform="uppercase"
-    //         ml="2"
-    //       >
-    //         {property.beds} beds &bull; {property.baths} baths
-    //       </Box>
-    //     </Box>
-    //
-    //     <Box
-    //       mt="1"
-    //       fontWeight="semibold"
-    //       as="h4"
-    //       lineHeight="tight"
-    //       isTruncated
-    //     >
-    //       {property.title}
-    //     </Box>
-    //
-    //     <Box>
-    //       {property.formattedPrice}
-    //       <Box as="span" color="gray.600" fontSize="sm">
-    //         / wk
-    //       </Box>
-    //     </Box>
-    //
-    //   </Box>
-    // </Box>
+      </Box>
+    </HStack>
   )
 }
 
