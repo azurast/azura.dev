@@ -48,7 +48,11 @@ const theme = extendTheme({
       light: '#ee2074',
       dark: '#f1478e'
     },
-    dark: '#1A202C',
+    tertiary: {
+      light: '#ef8d2e',
+      dark: '#f4bb3a'
+    },
+    dark: '#141822',
     colorSecondary : {
       light: 'gray.700',
       dark: 'gray.400'

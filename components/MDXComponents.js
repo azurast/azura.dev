@@ -7,7 +7,7 @@ import {
   Link,
   Text,
   Divider,
-  useColorMode
+  useColorMode, textDecoration
 } from '@chakra-ui/react';
 import { jsx } from "@emotion/react";
 import NextLink from 'next/link'
@@ -20,8 +20,8 @@ const secondaryThemeColor = theme.colors.secondary;
 const CustomLink = (props) => {
   const { colorMode } = useColorMode()
   const color = {
-    light: 'blue.500',
-    dark: 'blue.500'
+    light: 'brandTertiary.800',
+    dark: 'brandTertiary.300'
   }
 
   const href = props.href
@@ -34,7 +34,6 @@ const CustomLink = (props) => {
       </NextLink>
     )
   }
-
   return <Link color={color[colorMode]} isExternal {...props} />
 }
 
@@ -81,7 +80,9 @@ const DocsHeading = (props) => {
               visibility: 'hidden',
               content: `""`
             },
-            '&[id]:hover a': { opacity: 1 }
+            '&[id]:hover a': {
+              opacity: 1
+            }
           }}
           {...props}
           mb="1em"
@@ -122,10 +123,21 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />
 }
 
+const ColoredText = (props) => {
+  const { colorMode } = useColorMode()
+  const textColor = {
+    light: 'brandPrimary.500',
+    dark: 'brandTertiary.500'
+  }
+  return (
+    <Text color={textColor[colorMode]} {...props} />
+  )
+}
+
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4}  {...props} />,
   h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
-  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
+  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold"{...props} />,
   h4: (props) => <DocsHeading as="h4" size="sm" fontWeight="bold" {...props} />,
   h5: (props) => <DocsHeading as="h5" size="sm" fontWeight="bold" {...props} />,
   h6: (props) => <DocsHeading as="h6" size="xs" fontWeight="bold" {...props} />,
@@ -139,9 +151,9 @@ const MDXComponents = {
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
+  strong: (props) => <ColoredText as="p" fontWeight="bold" {...props} />,
   blockquote: Quote,
-  Image,
-  // img: (props) => <Image {...props} />
+  Image
 }
 
 export { CustomLink }

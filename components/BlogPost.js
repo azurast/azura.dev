@@ -9,6 +9,7 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
 
   const secondaryTextColor = theme.colors.colorSecondary;
   const secondaryThemeColor = theme.colors.secondary;
+  const tertiaryThemeColor = theme.colors.tertiary;
 
   return (
     <NextLink href={`blog/${slug}`} passHref>
@@ -21,7 +22,7 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
             flexDirection={['column', 'row']}
           >
             <Flex flexDirection="column" align="flex-start" justifyContent="start" width="100%">
-              <Heading size="md" as="h3" mb={1} fontWeight="bold" color={secondaryThemeColor[colorMode]}>
+              <Heading size="md" as="h3" mb={2} fontWeight="bold" color={secondaryThemeColor[colorMode]} transition="transform 225ms ease-in-out" _hover={{ transform: "scale(1.0150)", color: tertiaryThemeColor[colorMode] }}>
                 {title}
               </Heading>
               <Text

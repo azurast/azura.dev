@@ -1,5 +1,5 @@
 import React from "react"
-import {Box, Image, Badge, useColorMode, HStack, Button} from "@chakra-ui/react"
+import {Box, Image, Badge, useColorMode, Stack, Button} from "@chakra-ui/react"
 import theme from "../styles/theme";
 
 const ProjectCard = () => {
@@ -23,8 +23,9 @@ const ProjectCard = () => {
   }
 
   return (
-    <HStack
+    <Stack
       transition="transform 225ms ease-in-out"
+      direction={["column", "row"]}
       _hover={{
         transform: "scale(1.0150)"
       }}
@@ -68,7 +69,7 @@ const ProjectCard = () => {
           </Button>
         </Box>
       </Box>
-    </HStack>
+    </Stack>
   )
 }
 

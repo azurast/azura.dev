@@ -44,18 +44,19 @@ export default function Index({ posts }) {
           alignItems="flex-start"
           m="0 auto 4rem auto"
           maxWidth="700px"
+          px={2}
         >
           <Flex
             flexDirection="column"
             justifyContent="flex-start"
             alignItems="flex-start"
             maxWidth="700px"
-            px={4}
           >
-            <Heading letterSpacing="tight" mb={4} as="h1" size="2xl" color={accentColor[colorMode]}>
-              Blog ({posts.length} posts)
+            <Heading letterSpacing="tight" mb={6} as="h1" size="2xl" color={accentColor[colorMode]}>
+              Blog
+              {/*({posts.length} posts)*/}
             </Heading>
-            <InputGroup mb={4} mr={4} w="100%">
+            <InputGroup mb={6} mr={4} w="100%">
               <Input
                 aria-label="Search by title"
                 placeholder="Search by title"
