@@ -8,7 +8,7 @@ import {
   Stack,
   SimpleGrid,
   Image,
-  VStack,
+  VStack, Box, Spacer,
 } from '@chakra-ui/react'
 import Container from "../components/Container";
 import Skills from "../components/Skills";
@@ -68,13 +68,27 @@ export default function Index({ projects }) {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Stack justify="space-between" spacing={{ base: 16, md: 48 }} mb={4} direction='row' >
-              <VStack align="stretch">
-                <Heading mb={1} transition="transform 125ms ease-in-out" color={accentColor[colorMode]} size="2xl">{welcomeMessage}</Heading>
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <Heading mb={1} size="lg" color={secondaryColor[colorMode]}>I'm Azura Sakan Taufik 👋</Heading>
-              </VStack>
-              <Image src='/images/me.png' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>
+            <Flex
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+            >
+              <Box>
+                <VStack align="stretch">
+                  <Heading mb={1} transition="transform 125ms ease-in-out" color={accentColor[colorMode]} size="2xl">{welcomeMessage}</Heading>
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
+                  <Heading mb={1} size="lg" color={secondaryColor[colorMode]}>I'm Azura Sakan Taufik 👋</Heading>
+                </VStack>
+              </Box>
+              <Spacer />
+              <Box>
+                <Image src='/images/me.png' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>
+              </Box>
+            </Flex>
+            <Stack justify="space-between" spacing="auto" mb={4} direction={{ base: 'row', md: ['column', 'row'] }} >
+
+
               {/*<GooglyEyes/>*/}
             </Stack>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
