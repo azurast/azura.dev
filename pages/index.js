@@ -68,17 +68,17 @@ export default function Index({ projects }) {
             alignItems="flex-start"
             maxWidth="700px"
           >
-            <Stack justify="space-between" spacing={{ base: 2, sm: 2, md: 24 }} mb={4} direction={{ base: ["column", "row"], sm: ["column", "row"], md: ["column", "row"] }}>
+            <Stack justify="space-between" spacing={{ base: 16, md: 48 }} mb={4} direction='row' >
               <VStack align="stretch">
                 <Heading mb={1} transition="transform 125ms ease-in-out" color={accentColor[colorMode]} size="2xl">{welcomeMessage}</Heading>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 <Heading mb={1} size="lg" color={secondaryColor[colorMode]}>I'm Azura Sakan Taufik 👋</Heading>
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                <Text color={secondaryTextColor[colorMode]}>I'm a junior developer at Apple Developer Academy Indonesia @ BINUS learning all things iOS starting from research, design, and development! I'm currently exploring my interests surrounding <span style={{ fontWeight: 'bold' }}>mobile, web, and game development. </span></Text>
               </VStack>
-              <Image src='/images/me.png' width={{ base: 50, sm: 100, md: 100, lg: 150 }} height={{ base: 50, sm: 100, md: 100, lg: 150 }} layout="responsive" alt="azura memoji"/>
+              <Image src='/images/me.png' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>
               {/*<GooglyEyes/>*/}
             </Stack>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            <Text color={secondaryTextColor[colorMode]}>I'm a junior developer at Apple Developer Academy Indonesia @ BINUS learning all things iOS starting from research, design, and development! I'm currently exploring my interests surrounding <span style={{ fontWeight: 'bold' }}>mobile, web, and game development. </span></Text>
             <Heading as="h3" size="md" my={2} color={textColor[colorMode]}>My Skills</Heading>
             <Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products.</Text>
             <Skills/>

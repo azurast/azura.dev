@@ -1,4 +1,4 @@
-import {Badge, Flex, Heading, HStack, Stack, Text, useColorMode} from "@chakra-ui/react";
+import { Badge, Flex, Heading, Stack, Text, useColorMode, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 import Container from "../components/Container";
 import Head from 'next/head';
@@ -43,17 +43,19 @@ export default function ProjectLayout({ children, frontMatter }) {
             <Text fontWeight="bold">
               {`${frontMatter.type} | ${frontMatter.platform} | ${frontMatter.year}`}
             </Text>
-            <HStack spacing="8px" my="2">
+            <Wrap>
               {
                 frontMatter.techStack.map((each) => {
                   return (
-                    <Badge key={each} borderRadius="full" px="2" colorScheme="brandTertiary">
-                      {each}
-                    </Badge>
+                    <WrapItem key={each}>
+                      <Badge key={each} borderRadius="full" px="2" colorScheme="brandTertiary">
+                        {each}
+                      </Badge>
+                    </WrapItem>
                   )
                 })
               }
-            </HStack>
+            </Wrap>
           </Flex>
           {children}
         </Stack>
