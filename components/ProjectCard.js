@@ -1,6 +1,6 @@
 import React from "react"
 import NextLink from 'next/link'
-import {Box, Image, Badge, useColorMode, Stack, Button} from "@chakra-ui/react"
+import {Box, Image, useColorMode, Stack, Button} from "@chakra-ui/react"
 import theme from "../styles/theme";
 
 const ProjectCard = ({ title, briefDescription, imageUrl, imageAlt, slug }) => {
@@ -21,7 +21,6 @@ const ProjectCard = ({ title, briefDescription, imageUrl, imageAlt, slug }) => {
       }}
     >
       <Box
-        // maxW="sm"
         width={{ base: "100%", sm: "50%", md: "75%" }}
         borderWidth="1px"
         borderRadius="lg"

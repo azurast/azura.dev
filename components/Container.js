@@ -16,6 +16,7 @@ import {
   SiGmail,
 } from "react-icons/si";
 import NextLink from "next/link"
+import Image from "next/image";
 import styled from "@emotion/styled";
 import DarkModeSwitcher from '../components/DarkModeSwitcher'
 import theme from '../styles/theme';
@@ -73,7 +74,7 @@ const Container = ({ children }) => {
         <Box>
           <NextLink href="/" passHref>
             <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>
-              Home
+              <Image src='/images/logo/transparant-logo.png' width={50} height={50} alt='home logo'/>
             </Button>
           </NextLink>
           <NextLink href="/blog" passHref>
@@ -116,7 +117,7 @@ const Container = ({ children }) => {
         mx="auto"
       >
         <Divider orientation="horizontal" />
-        <SimpleGrid columns={3} spacing={10} mt={6} mb={1}>
+        <SimpleGrid columns={4} spacing={10} mt={6} mb={1}>
           <Box
             key="linkedin"
             _hover={{
@@ -131,7 +132,7 @@ const Container = ({ children }) => {
             </NextLink>
           </Box>
           <Box
-            key="linkedin"
+            key="github"
             _hover={{
               transform: "scale(1.01)",
               cursor: "pointer"
@@ -144,7 +145,7 @@ const Container = ({ children }) => {
             </NextLink>
           </Box>
           <Box
-            key="linkedin"
+            key="medium"
             _hover={{
               transform: "scale(1.01)",
               cursor: "pointer",
@@ -157,8 +158,21 @@ const Container = ({ children }) => {
               </a>
             </NextLink>
           </Box>
+          <Box
+            key="gmail"
+            _hover={{
+              transform: "scale(1.01)",
+              cursor: "pointer"
+            }}
+          >
+            <NextLink href="mailto:azstima@.gmail.com">
+              <a target="_blank">
+                <Icon as={SiGmail} w={6} h={6} color={gray} _hover={{ color: "red.500" }} />
+              </a>
+            </NextLink>
+          </Box>
         </SimpleGrid>
-        <Text color={color[colorMode]}mt={2} fontSize={12}>
+        <Text color={color[colorMode]} mt={2} fontSize={12}>
           © {new Date().getFullYear()} Azura Sakan Taufik.
         </Text>
         <Text color={color[colorMode]} fontSize={12}>
