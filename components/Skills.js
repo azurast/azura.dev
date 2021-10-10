@@ -81,7 +81,7 @@ const Skills = () => {
       {
         mySkills.map((skill) => {
           return (
-            <Tooltip label={skill.text}>
+            <Tooltip label={skill.text} key={skill.text}>
               <Box
                   key={skill.text}
                   transition="transform 125ms ease-in-out"
