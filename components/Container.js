@@ -18,6 +18,7 @@ import {
 import NextLink from "next/link"
 import Image from "next/image";
 import styled from "@emotion/styled";
+import { motion } from "framer-motion";
 import DarkModeSwitcher from '../components/DarkModeSwitcher'
 import theme from '../styles/theme';
 
@@ -54,6 +55,16 @@ const Container = ({ children }) => {
     transition: height .5s, line-height .5s;
   `
 
+  const NavBrand = () => (
+    <motion.div
+      className="navBrand"
+      whileHover={{ scale: 1.2, rotate: 90 }}
+      whileTap={{ scale: 0.8, rotate: -90, borderRadius: "100%" }}
+    >
+      <Image src='/images/logo/transparant-logo.png' width={50} height={50} alt='home logo'/>
+    </motion.div>
+  )
+
   return (
     <>
       <StickyNav
@@ -73,8 +84,9 @@ const Container = ({ children }) => {
       >
         <Box>
           <NextLink href="/" passHref>
-            <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>
-              <Image src='/images/logo/transparant-logo.png' width={50} height={50} alt='home logo'/>
+            <Button as="a" variant="normal" p={[1, 2, 4]}>
+              {/*<Image src='/images/logo/transparant-logo.png' width={50} height={50} alt='home logo'/>*/}
+              <NavBrand/>
             </Button>
           </NextLink>
           <NextLink href="/blog" passHref>
@@ -98,6 +110,13 @@ const Container = ({ children }) => {
         color={color[colorMode]}
         px={[0, 4, 4]}
         mt={[4, 8, 8]}
+        // css={{
+        //   backgroundImage:'radial-gradient(#ddd 1px, transparent 1px), radial-gradient(#ddd 1px, transparent 1px)',
+        //   backgroundPosition: '0 0, 25px 25px',
+        //   backgroundAttachment: 'fixed',
+        //   backgroundSize: '50px 50px',
+        //   overflowX: 'hidden'
+        // }}
       >
         {children}
       </Flex>
@@ -165,7 +184,7 @@ const Container = ({ children }) => {
               cursor: "pointer"
             }}
           >
-            <NextLink href="mailto:azstima@.gmail.com">
+            <NextLink href="mailto:azstima@gmail.com">
               <a target="_blank">
                 <Icon as={SiGmail} w={6} h={6} color={gray} _hover={{ color: "red.500" }} />
               </a>
