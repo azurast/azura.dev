@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import { ChakraProvider, ColorModeProvider, useColorMode } from "@chakra-ui/react";
 import { Global, css } from "@emotion/react";
 import { prismLightTheme, prismDarkTheme } from "../styles/prism";
+import theme from "/styles/theme";
 
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode()
@@ -22,12 +23,13 @@ const GlobalStyle = ({ children }) => {
           html {
             min-width: 356px;
             scroll-behavior: smooth;
+            background: ${colorMode === 'light' ? 'white' : theme.colors.dark};
           }
           #__next {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: ${colorMode === 'light' ? 'white' : '#171717'};
+            background: ${colorMode === 'light' ? 'white' : theme.colors.dark};
           }
         `}
       />
@@ -38,7 +40,7 @@ const GlobalStyle = ({ children }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <ColorModeProvider
         options={{
           initialColorMode: "light",

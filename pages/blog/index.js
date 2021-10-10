@@ -6,17 +6,20 @@ import {
   Stack,
   Input,
   InputGroup,
-  InputRightElement
+  InputRightElement,
+  useColorMode
 } from '@chakra-ui/react'
 
 import Container from "../../components/Container";
 import { getAllFilesFrontMatter } from "../../lib/mdx";
 import BlogPost from "../../components/BlogPost";
-
-import { SearchIcon } from '@chakra-ui/icons'
+import { SearchIcon } from '@chakra-ui/icons';
+import theme from '../../styles/theme';
 
 export default function Index({ posts }) {
   const [searchValue, setSearchValue] = useState('')
+  const { colorMode } = useColorMode();
+  const accentColor = theme.colors.accent;
 
   const filteredBlogPosts = posts
     .sort(
@@ -28,7 +31,10 @@ export default function Index({ posts }) {
   return (
     <>
       <Head>
-        <title>Blog - Azura Sakan Taufik</title>
+        <title>azura.dev | Blog</title>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        </style>
       </Head>
       <Container>
         <Stack
@@ -38,18 +44,19 @@ export default function Index({ posts }) {
           alignItems="flex-start"
           m="0 auto 4rem auto"
           maxWidth="700px"
+          px={2}
         >
           <Flex
             flexDirection="column"
             justifyContent="flex-start"
             alignItems="flex-start"
             maxWidth="700px"
-            px={4}
           >
-            <Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
-              Blog ({posts.length} posts)
+            <Heading letterSpacing="tight" mb={6} as="h1" size="2xl" color={accentColor[colorMode]}>
+              Blog
+              {/*({posts.length} posts)*/}
             </Heading>
-            <InputGroup mb={4} mr={4} w="100%">
+            <InputGroup mb={6} mr={4} w="100%">
               <Input
                 aria-label="Search by title"
                 placeholder="Search by title"

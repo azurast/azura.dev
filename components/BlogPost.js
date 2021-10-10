@@ -2,13 +2,14 @@ import React from 'react'
 import NextLink from 'next/link'
 import { useColorMode, Heading, Text, Flex, Box, Link } from '@chakra-ui/react'
 import { parseISO, format } from 'date-fns'
+import theme from "../styles/theme";
 
 const BlogPost = ({ title, publishedAt, summary, slug }) => {
   const { colorMode } = useColorMode()
-  const secondaryTextColor = {
-    light: 'gray.700',
-    dark: 'gray.400'
-  }
+
+  const secondaryTextColor = theme.colors.colorSecondary;
+  const secondaryThemeColor = theme.colors.secondary;
+  const tertiaryThemeColor = theme.colors.tertiary;
 
   return (
     <NextLink href={`blog/${slug}`} passHref>
@@ -21,7 +22,7 @@ const BlogPost = ({ title, publishedAt, summary, slug }) => {
             flexDirection={['column', 'row']}
           >
             <Flex flexDirection="column" align="flex-start" justifyContent="start" width="100%">
-              <Heading size="md" as="h3" mb={1} fontWeight="medium">
+              <Heading size="md" as="h3" mb={2} fontWeight="bold" color={secondaryThemeColor[colorMode]} transition="transform 225ms ease-in-out" _hover={{ transform: "scale(1.0150)", color: tertiaryThemeColor[colorMode] }}>
                 {title}
               </Heading>
               <Text

@@ -7,16 +7,22 @@ import {
   Link,
   Text,
   Divider,
-  useColorMode
+  useColorMode, textDecoration
 } from '@chakra-ui/react';
 import { jsx } from "@emotion/react";
 import NextLink from 'next/link'
+import Image from "next/image"
+import theme from "../styles/theme";
+
+const accentThemeColor = theme.colors.accent;
+const secondaryThemeColor = theme.colors.secondary;
+const textColor = theme.colors.textColor;
 
 const CustomLink = (props) => {
   const { colorMode } = useColorMode()
   const color = {
-    light: 'blue.500',
-    dark: 'blue.500'
+    light: 'brandTertiary.800',
+    dark: 'brandTertiary.300'
   }
 
   const href = props.href
@@ -29,7 +35,6 @@ const CustomLink = (props) => {
       </NextLink>
     )
   }
-
   return <Link color={color[colorMode]} isExternal {...props} />
 }
 
@@ -58,50 +63,56 @@ const Quote = (props) => {
   )
 }
 
-const DocsHeading = (props) => (
-  <Heading
-    css={{
-      scrollMarginTop: '100px',
-      scrollSnapMargin: '100px', // Safari
-      '&[id]': {
-        pointerEvents: 'none'
-      },
-      '&[id]:before': {
-        display: 'block',
-        height: ' 6rem',
-        marginTop: '-6rem',
-        visibility: 'hidden',
-        content: `""`
-      },
-      '&[id]:hover a': { opacity: 1 }
-    }}
-    {...props}
-    mb="1em"
-    mt="2em"
-  >
-    <Box pointerEvents="auto">
-      {props.children}
-      {props.id && (
-        <Box
-          aria-label="anchor"
-          as="a"
-          color="blue.500"
-          fontWeight="normal"
-          outline="none"
-          _focus={{
-            opacity: 1,
-            boxShadow: 'outline'
+const DocsHeading = (props) => {
+  const { colorMode } = useColorMode()
+  return (
+      <Heading
+          css={{
+            color: secondaryThemeColor[colorMode],
+            scrollMarginTop: '100px',
+            scrollSnapMargin: '100px', // Safari
+            '&[id]': {
+              pointerEvents: 'none'
+            },
+            '&[id]:before': {
+              display: 'block',
+              height: ' 6rem',
+              marginTop: '-6rem',
+              visibility: 'hidden',
+              content: `""`
+            },
+            '&[id]:hover a': {
+              opacity: 1
+            }
           }}
-          opacity="0"
-          ml="0.375rem"
-          href={`#${props.id}`}
-        >
-          #
+          {...props}
+          mb="1em"
+          mt="2em"
+      >
+        <Box pointerEvents="auto">
+          {props.children}
+          {props.id && (
+              <Box
+                  aria-label="anchor"
+                  as="a"
+                  color="yellow.400"
+                  fontWeight="normal"
+                  outline="none"
+                  _focus={{
+                    opacity: 1,
+                    boxShadow: 'outline'
+                  }}
+                  opacity="0"
+                  ml="0.375rem"
+                  href={`#${props.id}`}
+              >
+                #
+              </Box>
+          )}
         </Box>
-      )}
-    </Box>
-  </Heading>
-)
+      </Heading>
+  )
+}
 
 const Hr = () => {
   const { colorMode } = useColorMode()
@@ -113,24 +124,33 @@ const Hr = () => {
   return <Divider borderColor={borderColor[colorMode]} my={4} w="100%" />
 }
 
+const ColoredText = (props) => {
+  const { colorMode } = useColorMode()
+  return (
+    <Text color={textColor[colorMode]} {...props} />
+  )
+}
+
 const MDXComponents = {
   h1: (props) => <Heading as="h1" size="xl" my={4} {...props} />,
   h2: (props) => <DocsHeading as="h2" size="lg" fontWeight="bold" {...props} />,
-  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold" {...props} />,
+  h3: (props) => <DocsHeading as="h3" size="md" fontWeight="bold"{...props} />,
   h4: (props) => <DocsHeading as="h4" size="sm" fontWeight="bold" {...props} />,
   h5: (props) => <DocsHeading as="h5" size="sm" fontWeight="bold" {...props} />,
   h6: (props) => <DocsHeading as="h6" size="xs" fontWeight="bold" {...props} />,
   inlineCode: (props) => (
-    <Code colorScheme="yellow" fontSize="0.84em" {...props} />
+    <Code colorScheme="purple" fontSize="0.84em" {...props} />
   ),
   br: (props) => <Box height="24px" {...props} />,
   hr: Hr,
   a: CustomLink,
-  p: (props) => <Text as="p" mt={0} lineHeight="tall" {...props} />,
+  p: (props) => <Text as="p" lineHeight="tall" {...props} />,
   ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
   ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
   li: (props) => <Box as="li" pb={1} {...props} />,
+  // strong: (props) => <ColoredText fontWeight="bold" {...props} />,
   blockquote: Quote,
+  Image
 }
 
 export { CustomLink }
