@@ -40,7 +40,7 @@ export default function ProjectLayout({ children, frontMatter }) {
             <Heading letterSpacing="tight" mb={2} as="h1" size="2xl" css={{ wordBreak: "break-all" }} color={accentTextColor[colorMode]}>
               {frontMatter.title}
             </Heading>
-            <Text fontWeight="bold">
+            <Text fontWeight="bold" mb={2}>
               {`${frontMatter.type} | ${frontMatter.platform} | ${frontMatter.year}`}
             </Text>
             <Wrap>
