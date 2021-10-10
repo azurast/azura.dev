@@ -1,19 +1,9 @@
 import React from "react"
+import NextLink from 'next/link'
 import {Box, Image, Badge, useColorMode, Stack, Button} from "@chakra-ui/react"
 import theme from "../styles/theme";
 
-const ProjectCard = () => {
-  const property = {
-    imageUrl: "/images/projects/donor+.png",
-    imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    title: "Donor+",
-    subtitle: "Donor+ is a convalescent plasma donor app created with SwiftUI",
-    formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4,
-  }
+const ProjectCard = ({ title, briefDescription, imageUrl, imageAlt, slug }) => {
 
   const { colorMode } = useColorMode()
 
@@ -31,15 +21,19 @@ const ProjectCard = () => {
       }}
     >
       <Box
-        maxW="sm"
+        // maxW="sm"
+        width={{ base: "100%", sm: "50%", md: "75%" }}
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
         borderColor={borderColor[colorMode]}
+        _hover={{
+          boxShadow: "lg"
+        }}
       >
-        <Image src={property.imageUrl} alt={property.imageAlt} />
+        <Image src={imageUrl} alt={imageAlt} />
       </Box>
-      <Box p="6">
+      <Box p={{ base: "0", sm: "2", md: "6" }}>
         <Box
           mt="1"
           fontWeight="bold"
@@ -50,7 +44,7 @@ const ProjectCard = () => {
           fontFamily={theme.fonts.heading}
           fontSize='24'
         >
-          {property.title}
+          {title}
         </Box>
         <Box
           mt="1"
@@ -58,15 +52,17 @@ const ProjectCard = () => {
           lineHeight="tight"
           color={theme.colors.colorSecondary[colorMode]}
         >
-          {property.subtitle}
+          {briefDescription}
         </Box>
         <Box d="flex" alignItems="baseline" mt="2">
           {/*<Badge borderRadius="full" px="2" colorScheme="brandPrimary">*/}
           {/*  SwiftUI*/}
           {/*</Badge>*/}
-          <Button colorScheme="brandSecondary" variant="link">
-            View project →
-          </Button>
+          <NextLink href={`projects/${slug}`} passHref>
+            <Button color={theme.colors.secondary[colorMode]} variant="link">
+              View project →
+            </Button>
+          </NextLink>
         </Box>
       </Box>
     </Stack>

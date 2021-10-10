@@ -56,6 +56,10 @@ const theme = extendTheme({
     colorSecondary : {
       light: 'gray.700',
       dark: 'gray.400'
+    },
+    textColor: {
+      light: '#5471fa',
+      dark: 'brandTertiary.500'
     }
   }
 })
