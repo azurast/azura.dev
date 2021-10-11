@@ -97,7 +97,7 @@ export default function Index({ projects }) {
               {/*<GooglyEyes/>*/}
             </Stack>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>I'm a junior developer at Apple Developer Academy Indonesia @ BINUS learning all things iOS starting from research, design, and development! I'm currently exploring my interests surrounding <span style={{ fontWeight: 'bold' }}>mobile, web, and game development. </span></Text>
+            <Text color={secondaryTextColor[colorMode]}>I'm a junior developer at Apple Developer Academy Indonesia @ BINUS learning all things iOS starting from research, design, and development! I'm currently exploring my interests surrounding  <span style={{ fontWeight: 'bold' }}>mobile, web, and game development. </span></Text>
             <Heading as="h3" size="md" my={2} color={textColor[colorMode]}>My Skills</Heading>
             <Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products.</Text>
             <Skills/>
