@@ -22,6 +22,7 @@ const ProjectCard = ({ title, briefDescription, imageUrl, imageAlt, slug }) => {
     >
       <Box
         width={{ base: "100%", sm: "50%", md: "75%" }}
+        minWidth={{ base: "100%", sm: "50%", md: "50%" }}
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"

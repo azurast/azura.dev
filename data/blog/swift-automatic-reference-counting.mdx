@@ -1,0 +1,195 @@
+---
+title: 'Swift Basics - Automatic Reference Counting'
+publishedAt: '2021-10-19'
+summary: 'Ever wondered how Swift manages all those active class instances?'
+---
+
+## What is ARC?
+
+Automatic Reference Counting is Swift's way to keep track of how many strong references are pointing to a specific instance. ARC is used to :
+  - To track and manage memory usage;
+  - so that you don't need to think about it yourself.
+  - It automatically frees up memory used by class instances when they are no longer needed.
+  - Only applies to instances of classes because they are reference type while enums & structs are values types and thus not stored and passed by reference.
+  - Everytime an instance of a class is created/instantiated, ARC takes a chunk of memory to store information about that instance and;
+  - whenever that instance is no longer needed, that memory is freed by ARC so that it can be used for other things.
+
+
+
+## How do ARC works?
+
+  ARC works by tracking the number of **properties, constants, and variables** that are being referred in the instance of the class.
+
+  **How to ensure that ARC does not deallocate an instance while it is still being used?** As long as there is **one** active reference to that instance, it still exists in memory.
+
+## Strong Reference Cycle
+
+Is the condition when there are two instances of different class that hold a strong reference to each other, preventing each instance to be deinitialized.
+
+### How does it happen?
+
+```swift
+class Person {
+	let name: String
+	var dog: Dog?
+
+	init(name: String) { self.name = name }
+
+	deinit { print("person named \(name) is deinitialized") }
+}
+
+class Dog {
+	let name : String
+	var owner: Person?
+
+	init(name: String) { self.name = name }
+
+	deinit { print("dog named \(name) is deinitialized") }
+}
+```
+
+Let's say we have 2 class `Person` and `Dog`, now we create an instance for each class.
+
+```swift
+var adam: Person?
+var max: Dog?
+
+adam = Person(name: "Adam Smith")
+max = Dog(name: "Maximus")
+```
+
+The `Person` class has an optional property of `dog` and vice versa the `Dog` class has an optional property of `owner`. Let's say we want to assign both variables to each other. We would have :
+
+```swift
+adam!.dog = max
+max!.owner = adam
+```
+
+Here each of them is pointing at one another. They have strong reference to each other.
+
+In this case, even if we were to assign `adam` as `nil`  the reference count to `max` won't drop to 0 because the `Person` class instance (that is no longer tied to the variable `adam` ) still exists somewhere in memory because the `Dog` class instance (that is no longer tied to the variable `max` ) still exists somewhere in memory referencing to back to that `Person` instance.
+
+In short we have no way of accessing either instance but they still take up a space in the memory. This is why it is called a strong reference cycle that can't be broken.
+
+### How to resolve it?
+
+Fear not since the developers over at Swift have thought about it! We have 2 options to choose and they both work in a way such that an instance can refer to other instance in a **not strong** manner, thus preventing the cycle to happen.
+
+### 1. Weak References
+#### use when both properties are allowed to be nil
+**Weak reference** is used when the other instance has a shorter lifetime (the other instance can be deallocated first).
+It allows ARC to deallocate the referred instance once it is unused and is indicated by placing the `weak` keyword before the declaration.
+When the referred instance is deallocated, ARC automatically sets the value to `nil`.
+
+To put it into perspective, let's say that the `owner` property of the `Dog` class is `weak`.
+Let's say that a dog does not necessarily always have to have an owner thus the reference to owner is weak :
+
+```swift
+class Person {
+	let name: String
+	var dog: Dog?
+
+	init(name: String) { self.name = name }
+
+	deinit { print("person named \(name) is deinitialized") }
+}
+
+class Dog {
+	let name : String
+	weak var owner: Person?
+
+	init(name: String) { self.name = name }
+
+	deinit { print("dog named \(name) is deinitialized") }
+}
+```
+
+And we have the same case as before
+
+```swift
+adam!.dog = max
+max!.owner = adam
+```
+
+This means that if we were to set `adam = nil` then `adam` will be deinitialized and the line `person named Adam is deinitialized` will be printed.
+This is because `max` no longer holds a strong reference to adam, allowing ARC to deinitialize it.
+
+### 2. Unowned References
+#### use when only one property is allowed to be nil
+**Unowned reference** is used when the other instance has the same or longer lifetime. It's usage is the same as weak reference & is indicated by placing the `unowned` keyword before the declaration.
+BUT, in contrast, it is expected to **always have a value**. In other words, it is **should not be an optional**. An unowned reference to a deallocated instance may lead to runtime error.
+
+Let's say that a person must and will always have an ID Card and therefore we write the classes like this :
+
+```swift
+class Person {
+	let name: String
+	var card: Card?
+
+	init(name: String) { self.name = name }
+
+	deinit { print("person named \(name) is deinitialized") }
+}
+
+class Card {
+	let id : String
+	unowned var owner: Person
+
+	init(name: String) {
+	  self.id = id
+	  self.owner = owner
+	}
+
+	deinit { print("dog named \(name) is deinitialized") }
+}
+```
+
+Let's create Adam & assign him an ID card.
+
+```swift
+  var adam: Person?
+  adam = Person(name: "Adam Smith")
+  adam.card = Card(id: "0987654321", owner: adam!)
+```
+
+Since the only strong reference here is the property `card` of the class `Person`, if we were to set `adam = nil` then both instances will be deinitialized.
+
+**Unowned Optional References**
+
+As we mentioned previously, an unowned reference cannot be of type optional. But, can we make it optional?
+Yes it turns out we can **as long as it refers to a valid instance OR is nil**. That means if we have an unowned optional reference to an instance and that
+instance is removed, then we have to ensure that all reference pointing to that instance is also removed and is set to nil.
+
+### 3. Combination
+#### use when both properties are NOT allowed to be nil
+Combination of unowned property in one class and an implicitly unwrapped property on the other. Such cases where both properties are not allowed to be nil is parent-child relationship.
+A parent must have a child, and a child must have a parent.
+
+```swift
+class Parent {
+    let name: String
+    var child: Child!
+    init(name: String, childName: String) {
+        self.name = name
+        self.child = Child(name: childName, parent: self)
+    }
+}
+
+class Child {
+    let name: String
+    unowned let parent: Parent
+    init(name: String, parent: Parent) {
+        self.name = name
+        self.parent = parent
+    }
+}
+```
+
+Within the `Parent` class, the `child` property is of type implicitly unwrapped optional and within the `Child` class, the parent is unowned.
+The `Child` initializer is called from within the `Parent` initializer. But the parent can only assign itself to the `Child` initializer after it is completely instantiated.
+This is an example of a [Two-Phase Initialization](https://docs.swift.org/swift-book/LanguageGuide/Initialization.html#ID220). This is also why the `child` property of the parent is **implicitly unwrapped** (marked with the `!` annotation).
+The `Parent` instance will have a value of `nil` for its `child` property when initialized like other optionals in general but without the need to unwrap it to access its value.
+Even though the value of `child` is nil, it is still considered to be fully created or instantiated, making it able to assign `self` to the `Child` initializer.
+
+***
+_This is my notes & summary on automatic reference counting based on the Swift docs & Youtube tutorials_
