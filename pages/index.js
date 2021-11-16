@@ -105,7 +105,7 @@ export default function Index({ projects }) {
             <Heading as="h3" size="md" my={2} color={textColor[colorMode]}>What I've been up to</Heading>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are some of the applications I've build over the years.</Text>
-            <SimpleGrid columns={[1, null,1]} gap={6} m="1.5rem 0">
+            <SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">
               {
                 projects.map((frontMatter) => <ProjectCard key={frontMatter.title} {...frontMatter}/>)
               }
