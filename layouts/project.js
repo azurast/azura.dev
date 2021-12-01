@@ -8,6 +8,10 @@ export default function ProjectLayout({ children, frontMatter }) {
   const { colorMode } = useColorMode()
   const accentTextColor = theme.colors.accent;
 
+  const badgeColor = {
+    light: "brandPrimary",
+    dark: "brandTertiary"
+  }
   return (
     <>
       <Head>
@@ -48,7 +52,7 @@ export default function ProjectLayout({ children, frontMatter }) {
                 frontMatter.techStack.map((each) => {
                   return (
                     <WrapItem key={each}>
-                      <Badge key={each} borderRadius="full" px="2" colorScheme="brandTertiary">
+                      <Badge key={each} borderRadius="full" px="2" colorScheme={badgeColor[colorMode]} fontSize="0.8em">
                         {each}
                       </Badge>
                     </WrapItem>

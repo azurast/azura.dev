@@ -8,7 +8,7 @@ import {
   Stack,
   SimpleGrid,
   Image,
-  VStack, Box, Spacer,
+  VStack, Box, Spacer, Avatar,
 } from '@chakra-ui/react'
 import Container from "../components/Container";
 import Skills from "../components/Skills";
@@ -65,9 +65,10 @@ export default function Index({ projects }) {
           spacing={8}
           justifyContent="center"
           alignItems="flex-start"
-          m="0 auto 4rem auto"
-          maxWidth="700px"
-          px={2}
+          // m="0 auto 4rem auto"
+          // maxWidth="700px"
+          px={8}
+          m={"auto"}
         >
           <Flex
             flexDirection="column"
@@ -90,7 +91,13 @@ export default function Index({ projects }) {
               </Box>
               <Spacer />
               <Box>
-                <Image src='/images/me.png' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>
+                {/*<Image src='/images/azura_profile.jpg' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>*/}
+                <Avatar
+                    size="xl"
+                    name="Azura Sakan Taufik"
+                    src="../images/azura_profile.jpg"
+                    mr={2}
+                />
               </Box>
             </Flex>
             <Stack justify="space-between" spacing="auto" mb={4} direction={{ base: 'row', md: ['column', 'row'] }} >
@@ -98,14 +105,14 @@ export default function Index({ projects }) {
             </Stack>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <Text color={secondaryTextColor[colorMode]}>I'm a junior developer at Apple Developer Academy Indonesia @ BINUS learning all things iOS starting from research, design, and development! I'm currently exploring my interests surrounding  <span style={{ fontWeight: 'bold' }}>mobile, web, and game development. </span></Text>
-            <Heading as="h3" size="md" my={2} color={textColor[colorMode]}>My Skills</Heading>
+            <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>My Skills</Heading>
             <Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products.</Text>
             <Skills/>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Heading as="h3" size="md" my={2} color={textColor[colorMode]}>What I've been up to</Heading>
+            <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>What I've been up to</Heading>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are some of the applications I've build over the years.</Text>
-            <SimpleGrid columns={[1, null,1]} gap={6} m="1.5rem 0">
+            <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are my featured latest works.</Text>
+            <SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">
               {
                 projects.map((frontMatter) => <ProjectCard key={frontMatter.title} {...frontMatter}/>)
               }

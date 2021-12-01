@@ -1,19 +1,15 @@
 import React from "react"
 import NextLink from 'next/link'
-import {Box, Image, useColorMode, Stack, Button} from "@chakra-ui/react"
+import {Box, Image, useColorMode, VStack, Text, HStack, IconButton, Badge, WrapItem, Wrap} from "@chakra-ui/react"
 import theme from "../styles/theme";
+import {ArrowForwardIcon} from "@chakra-ui/icons";
 
-const ProjectCard = ({ title, briefDescription, imageUrl, imageAlt, slug }) => {
+const ProjectCard = ({ briefDescription, imageUrl, imageAlt, slug, techStack }) => {
 
   const { colorMode } = useColorMode()
 
-  const borderColor =  {
-    light: 'gray.200',
-    dark: 'gray.700'
-  }
-
   return (
-    <Stack
+    <VStack
       transition="transform 225ms ease-in-out"
       direction={["column", "row"]}
       _hover={{
@@ -21,51 +17,31 @@ const ProjectCard = ({ title, briefDescription, imageUrl, imageAlt, slug }) => {
       }}
     >
       <Box
-        width={{ base: "100%", sm: "50%", md: "75%" }}
-        minWidth={{ base: "100%", sm: "50%", md: "50%" }}
-        borderWidth="1px"
-        borderRadius="lg"
+        width={{ base: "100%", sm: "75%", md: "100%" }}
+        minWidth={{ base: "100%", sm: "75%", md: "50%" }}
+        borderRadius="sm"
         overflow="hidden"
-        borderColor={borderColor[colorMode]}
-        _hover={{
-          boxShadow: "lg"
-        }}
       >
-        <Image src={imageUrl} alt={imageAlt} />
+        <Image
+            src={imageUrl}
+            alt={imageAlt}
+        />
+        <HStack py={2}>
+          <Box
+              as="h4"
+              lineHeight="tight"
+              color={theme.colors.colorSecondary[colorMode]}
+          >
+            <Text fontWeight={"medium"}>{briefDescription}</Text>
+          </Box>
+          <Box d="flex" alignItems="baseline" mt="2">
+            <NextLink href={`projects/${slug}`} passHref>
+              <IconButton aria-label="View Project" icon={<ArrowForwardIcon/>} colorScheme="brandSecondary"/>
+            </NextLink>
+          </Box>
+        </HStack>
       </Box>
-      <Box p={{ base: "0", sm: "2", md: "6" }}>
-        <Box
-          mt="1"
-          fontWeight="bold"
-          as="h4"
-          lineHeight="tight"
-          isTruncated
-          color={theme.colors.accent[colorMode]}
-          fontFamily={theme.fonts.heading}
-          fontSize='24'
-        >
-          {title}
-        </Box>
-        <Box
-          mt="1"
-          as="h4"
-          lineHeight="tight"
-          color={theme.colors.colorSecondary[colorMode]}
-        >
-          {briefDescription}
-        </Box>
-        <Box d="flex" alignItems="baseline" mt="2">
-          {/*<Badge borderRadius="full" px="2" colorScheme="brandPrimary">*/}
-          {/*  SwiftUI*/}
-          {/*</Badge>*/}
-          <NextLink href={`projects/${slug}`} passHref>
-            <Button color={theme.colors.secondary[colorMode]} variant="link">
-              View project →
-            </Button>
-          </NextLink>
-        </Box>
-      </Box>
-    </Stack>
+    </VStack>
   )
 }
 

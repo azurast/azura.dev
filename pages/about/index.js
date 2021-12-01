@@ -32,7 +32,7 @@ export default function Index() {
           alignItems="flex-start"
           m="0 auto 4rem auto"
           maxWidth="700px"
-          px={2}
+          px={8}
         >
           <Flex
             flexDirection="column"
@@ -80,7 +80,7 @@ export default function Index() {
             <Text color={secondaryTextColor[colorMode]} mt={4}>
               To learn more about my accomplishments, see my resume below.
             </Text>
-            <NextLink href="https://drive.google.com/file/d/1-rYF0lmVREhDhyWrlCu1mMBSozqwgreE/view" passHref>
+            <NextLink href="https://drive.google.com/file/d/1-ckQOpW9fOaqku1MyP3H3oMs4fzjgGco/view?usp=sharing" passHref>
               <Button mt={4} rightIcon={<DownloadIcon/>} colorScheme="brandSecondary" download>
                 Resume
               </Button>
