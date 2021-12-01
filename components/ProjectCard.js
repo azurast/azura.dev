@@ -1,17 +1,12 @@
 import React from "react"
 import NextLink from 'next/link'
-import {Box, Image, useColorMode, VStack, Text, HStack, IconButton} from "@chakra-ui/react"
+import {Box, Image, useColorMode, VStack, Text, HStack, IconButton, Badge, WrapItem, Wrap} from "@chakra-ui/react"
 import theme from "../styles/theme";
 import {ArrowForwardIcon} from "@chakra-ui/icons";
 
-const ProjectCard = ({ briefDescription, imageUrl, imageAlt, slug }) => {
+const ProjectCard = ({ briefDescription, imageUrl, imageAlt, slug, techStack }) => {
 
   const { colorMode } = useColorMode()
-
-  // const borderColor =  {
-  //   light: 'gray.200',
-  //   dark: 'gray.700'
-  // }
 
   return (
     <VStack
@@ -22,8 +17,8 @@ const ProjectCard = ({ briefDescription, imageUrl, imageAlt, slug }) => {
       }}
     >
       <Box
-        width={{ base: "90%", sm: "75%", md: "100%" }}
-        minWidth={{ base: "90%", sm: "75%", md: "50%" }}
+        width={{ base: "100%", sm: "75%", md: "100%" }}
+        minWidth={{ base: "100%", sm: "75%", md: "50%" }}
         borderRadius="sm"
         overflow="hidden"
       >
@@ -46,9 +41,6 @@ const ProjectCard = ({ briefDescription, imageUrl, imageAlt, slug }) => {
           </Box>
         </HStack>
       </Box>
-      {/*<Box p={{ base: "0", sm: "2", md: "2" }}>*/}
-
-      {/*</Box>*/}
     </VStack>
   )
 }

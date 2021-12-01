@@ -31,7 +31,7 @@ export default function Index({ posts }) {
           alignItems="flex-start"
           m="0 auto 4rem auto"
           maxWidth="700px"
-          px={2}
+          px={8}
         >
           <Flex
             flexDirection="column"
@@ -44,7 +44,7 @@ export default function Index({ posts }) {
               {/*<Text as="u">Projects</Text>*/}
             </Heading>
             <Text color={secondaryTextColor[colorMode]}>Here are some of the work that I did during my university & academy days and some personal side projects 👾 </Text>
-            <SimpleGrid columns={[1, null,1]} gap={6} m="1.5rem 0">
+            <SimpleGrid columns={[1, null, 2]} gap={6} m="1.5rem 0">
               {
                 posts.map((frontMatter) => <ProjectCard key={frontMatter.title} {...frontMatter}/>)
               }
