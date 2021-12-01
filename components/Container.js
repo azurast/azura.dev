@@ -14,6 +14,7 @@ import {
   SiLinkedin,
   SiMedium,
   SiGmail,
+  SiPolywork
 } from "react-icons/si";
 import NextLink from "next/link"
 import Image from "next/image";
@@ -141,7 +142,7 @@ const Container = ({ children }) => {
         mx="auto"
       >
         <Divider orientation="horizontal" />
-        <SimpleGrid columns={4} spacing={10} mt={6} mb={1}>
+        <SimpleGrid columns={5} spacing={10} mt={6} mb={1}>
           <Box
             key="linkedin"
             _hover={{
@@ -182,6 +183,20 @@ const Container = ({ children }) => {
               </a>
             </NextLink>
           </Box>
+          {/*<Box*/}
+          {/*    key="medium"*/}
+          {/*    _hover={{*/}
+          {/*      transform: "scale(1.01)",*/}
+          {/*      cursor: "pointer",*/}
+          {/*      color: "blue.500"*/}
+          {/*    }}*/}
+          {/*>*/}
+          {/*  <NextLink href="https://www.polywork.com/azurast">*/}
+          {/*    <a target="_blank">*/}
+          {/*      <Icon as={SiPolywork} w={6} h={6} color={gray} _hover={{ color: color[colorMode] }} />*/}
+          {/*    </a>*/}
+          {/*  </NextLink>*/}
+          {/*</Box>*/}
           <Box
             key="gmail"
             _hover={{

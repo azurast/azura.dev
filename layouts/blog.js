@@ -65,7 +65,7 @@ export default function BlogLayout({ children, frontMatter }) {
                 <Avatar
                   size="xs"
                   name="Azura Sakan Taufik"
-                  src="../images/me.png"
+                  src="../images/azura_profile.jpg"
                   mr={2}
                 />
                 <Text fontSize="sm" color={secondaryTextColor[colorMode]}>
