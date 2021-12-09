@@ -3,11 +3,20 @@ import React from "react";
 import Container from "../components/Container";
 import Head from 'next/head';
 import theme from "../styles/theme";
+import { useRouter } from "next/router";
 
 export default function ProjectLayout({ children, frontMatter }) {
   const { colorMode } = useColorMode()
   const accentTextColor = theme.colors.accent;
 
+  const router = useRouter()
+
+  const meta = {
+    siteName: "azura.dev",
+    title: frontMatter.title || "azura.dev",
+    description: frontMatter.briefDescription || "Azura Sakan Taufik's Blog",
+    image: frontMatter.banner|| "/images/azuradev_banner.png"
+  }
   const badgeColor = {
     light: "brandPrimary",
     dark: "brandTertiary"
@@ -15,8 +24,18 @@ export default function ProjectLayout({ children, frontMatter }) {
   return (
     <>
       <Head>
-        <title>{frontMatter.title}- Project - Azura Sakan Taufik</title>
+        <title>{frontMatter.title} - Project - Azura Sakan Taufik</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta content={meta.description} name="description" />
+        <meta property="og:site_name" content={meta.siteName} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:url" content={`https://azura.dev${router.asPath}`} />
+        <meta property="og:image" content={meta.image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.image} />
         <link rel="web icon" href='/images/logo/light-logo.png' />
         <style>
           {/* eslint-disable-next-line react/no-unescaped-entities */}
