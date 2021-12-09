@@ -47,7 +47,7 @@ export default function ProjectLayout({ children, frontMatter }) {
             <Text fontWeight="bold" mb={2}>
               {`${frontMatter.type} | ${frontMatter.platform} | ${frontMatter.year}`}
             </Text>
-            <Wrap>
+            <Wrap mb={4}>
               {
                 frontMatter.techStack.map((each) => {
                   return (
