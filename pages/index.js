@@ -7,14 +7,14 @@ import {
   Flex,
   Stack,
   SimpleGrid,
-  Image,
-  VStack, Box, Spacer, Avatar,
+  VStack, Box, Spacer, Avatar, Button
 } from '@chakra-ui/react'
 import Container from "../components/Container";
 import Skills from "../components/Skills";
 import theme from "../styles/theme";
 import ProjectCard from "../components/ProjectCard";
 import {getAllFilesFrontMatter} from "../lib/mdx";
+import NextLink from "next/link";
 // import GooglyEyes from "../components/GooglyEyes";
 
 export default function Index({ projects }) {
@@ -104,7 +104,9 @@ export default function Index({ projects }) {
               {/*<GooglyEyes/>*/}
             </Stack>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>I'm a junior developer at Apple Developer Academy Indonesia @ BINUS learning all things iOS starting from research, design, and development! I'm currently exploring my interests surrounding  <span style={{ fontWeight: 'bold' }}>mobile, web, and game development. </span></Text>
+            <Text color={secondaryTextColor[colorMode]}>
+              I&apos m a junior iOS Developer who just graduated from Apple Developer Academy Indonesia @ BINUS where I learned the end-to-end process of product development starting from research, design, and development! I also just recently graduated from Universitas Multimedia Nusantara with a Bachelor in Computer Science where I was mainly involved in web, game, and mobile development. I&aposm currently honing my skills in  <span style={{ fontWeight: 'bold' }}>iOS development. </span>
+            </Text>
             <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>My Skills</Heading>
             <Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products.</Text>
             <Skills/>
@@ -114,9 +116,18 @@ export default function Index({ projects }) {
             <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are my featured latest works.</Text>
             <SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">
               {
-                projects.map((frontMatter) => <ProjectCard key={frontMatter.title} {...frontMatter}/>)
+                projects.map((frontMatter) => {
+                  if (frontMatter.featured === "yes") {
+                    return (<ProjectCard key={frontMatter.title} {...frontMatter}/>)
+                  }
+                })
               }
             </SimpleGrid>
+            <NextLink href='projects' passHref>
+              <Button colorScheme='brandSecondary' size='lg' variant='link'>
+                View All Projects
+              </Button>
+            </NextLink>
           </Flex>
         </Stack>
       </Container>
