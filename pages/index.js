@@ -7,7 +7,6 @@ import {
   Flex,
   Stack,
   SimpleGrid,
-  Image,
   VStack, Box, Spacer, Avatar,
 } from '@chakra-ui/react'
 import Container from "../components/Container";
@@ -114,7 +113,11 @@ export default function Index({ projects }) {
             <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are my featured latest works.</Text>
             <SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">
               {
-                projects.map((frontMatter) => <ProjectCard key={frontMatter.title} {...frontMatter}/>)
+                projects.map((frontMatter) => {
+                  if (frontMatter.featured === "yes") {
+                    return (<ProjectCard key={frontMatter.title} {...frontMatter}/>)
+                  }
+                })
               }
             </SimpleGrid>
           </Flex>
