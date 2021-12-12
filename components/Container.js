@@ -152,7 +152,7 @@ const Container = ({ children }) => {
           >
             <NextLink href="https://www.linkedin.com/in/azurast/">
               <a target="_blank">
-                <Icon as={SiLinkedin} w={6} h={6} color={gray} _hover={{ color: "blue.500" }}/>
+                <Icon as={SiLinkedin} w={5} h={5} color={gray} _hover={{ color: "blue.500" }}/>
               </a>
             </NextLink>
           </Box>
@@ -165,7 +165,7 @@ const Container = ({ children }) => {
           >
             <NextLink href="https://github.com/azurast/">
               <a target="_blank">
-                <Icon as={SiGithub} w={6} h={6} color={gray} _hover={{ color: color[colorMode] }}/>
+                <Icon as={SiGithub} w={5} h={5} color={gray} _hover={{ color: color[colorMode] }}/>
               </a>
             </NextLink>
           </Box>
@@ -179,24 +179,24 @@ const Container = ({ children }) => {
           >
             <NextLink href="https://medium.com/@azurast">
               <a target="_blank">
-                <Icon as={SiMedium} w={6} h={6} color={gray} _hover={{ color: color[colorMode] }} />
+                <Icon as={SiMedium} w={5} h={5} color={gray} _hover={{ color: color[colorMode] }} />
               </a>
             </NextLink>
           </Box>
-          {/*<Box*/}
-          {/*    key="medium"*/}
-          {/*    _hover={{*/}
-          {/*      transform: "scale(1.01)",*/}
-          {/*      cursor: "pointer",*/}
-          {/*      color: "blue.500"*/}
-          {/*    }}*/}
-          {/*>*/}
-          {/*  <NextLink href="https://www.polywork.com/azurast">*/}
-          {/*    <a target="_blank">*/}
-          {/*      <Icon as={SiPolywork} w={6} h={6} color={gray} _hover={{ color: color[colorMode] }} />*/}
-          {/*    </a>*/}
-          {/*  </NextLink>*/}
-          {/*</Box>*/}
+          <Box
+              key="medium"
+              _hover={{
+                transform: "scale(1.01)",
+                cursor: "pointer",
+                color: "blue.500"
+              }}
+          >
+            <NextLink href="https://www.polywork.com/azurast">
+              <a target="_blank">
+                <Icon as={SiPolywork} w={5} h={5} color={gray} _hover={{ color: "teal.500" }} />
+              </a>
+            </NextLink>
+          </Box>
           <Box
             key="gmail"
             _hover={{
@@ -206,7 +206,7 @@ const Container = ({ children }) => {
           >
             <NextLink href="mailto:azstima@gmail.com">
               <a target="_blank">
-                <Icon as={SiGmail} w={6} h={6} color={gray} _hover={{ color: "red.500" }} />
+                <Icon as={SiGmail} w={5} h={5} color={gray} _hover={{ color: "red.500" }} />
               </a>
             </NextLink>
           </Box>
