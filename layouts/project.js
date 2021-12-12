@@ -15,7 +15,8 @@ export default function ProjectLayout({ children, frontMatter }) {
     siteName: "azura.dev",
     title: frontMatter.title || "azura.dev",
     description: frontMatter.briefDescription || "Azura Sakan Taufik's Blog",
-    image: frontMatter.banner || frontMatter.imageUrl || "/images/azuradev_banner.png"
+    image: frontMatter.banner || frontMatter.imageUrl || "/images/azuradev_banner.png",
+    card: frontMatter.imageUrl
   }
   const badgeColor = {
     light: "brandPrimary",
@@ -38,7 +39,7 @@ export default function ProjectLayout({ children, frontMatter }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={`https://azura.dev${meta.image}`} />
+        <meta name="twitter:image" content={`https://azura.dev${meta.card}`} />
         <link rel="web icon" href='/images/logo/light-logo.png' />
         <style>
           {/* eslint-disable-next-line react/no-unescaped-entities */}
