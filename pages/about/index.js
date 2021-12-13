@@ -80,7 +80,7 @@ export default function Index() {
             <Text color={secondaryTextColor[colorMode]} mt={4}>
               To learn more about my accomplishments, see my resume below.
             </Text>
-            <NextLink href="https://drive.google.com/file/d/1_2X7XeLWy5GqsMhkzLeyuLsVoROOh5aY/view?usp=sharing" passHref>
+            <NextLink href="https://drive.google.com/file/d/13EenSOyZ_zJZyplc3w6fOA-UaVCbk2Yk/view?usp=sharing" passHref>
               <Button mt={4} rightIcon={<DownloadIcon/>} colorScheme="brandSecondary" download>
                 Resume
               </Button>
