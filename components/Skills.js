@@ -6,7 +6,7 @@ import {
   SiHtml5,
   SiCss3,
   SiReact,
-  SiNextDotJs,
+  SiNextdotjs,
   SiUnity,
   SiCsharp,
   SiGit,
@@ -60,7 +60,7 @@ const mySkills = [
   },
   {
     text: 'Next.js',
-    icon: SiNextDotJs,
+    icon: SiNextdotjs,
     color: 'brandTertiary.400'
   },
   {
