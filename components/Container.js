@@ -105,6 +105,11 @@ const Container = ({ children }) => {
               About
             </Button>
           </NextLink>
+          <NextLink href="/snippets" passHref>
+            <Button as="a" variant="ghost" p={[1, 2, 4]} _hover={{ backgroundColor: navHoverBg[colorMode] }}>
+              Snippets
+            </Button>
+          </NextLink>
         </Box>
         <DarkModeSwitcher />
       </StickyNav >
