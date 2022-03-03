@@ -1,0 +1,61 @@
+---
+title: 'Sticky Bottom Button'
+publishedAt: '2022-03-03'
+iosVersion: 'iOS 15.2'
+---
+I've been at a position where I needed to have a form of TextFields with a button at the bottom. I did the view using the usual VStack but the problem is that when the keyboard focuses, the button gets on top of it. It's pretty annoying & doesn't behave the way the design was intended.
+So the solution I chose after several stackoverflow searches later is to use `Spacer()` between the Views, in this case, the TextFields, and ignoring the bottom safe area that covers the keyboard area.
+This is part of my new SwiftUI Recipes which you can find [here](https://github.com/azurast/SwiftUI-Recipes/blob/main/SwiftUI%20Recipes/StickyBottomButton.swift)
+
+## Code
+
+```swift
+import SwiftUI
+
+class StickyBottomButtonVM: ObservableObject {
+    @Published var name: String = ""
+    @Published var email: String = ""
+}
+
+struct StickyBottomButton: View {
+    @ObservedObject var viewModel = StickyBottomButtonVM()
+
+    var body: some View {
+        VStack {
+            TextField("Name", text: $viewModel.name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Email", text: $viewModel.email)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            // MARK: - Step 1 Add Spacer to takes up the space between the TextFields (or any view) and Button
+            Spacer()
+            Button(action: {
+                print("I am clicked")
+            }, label: {
+                Text("Continue")
+                    .frame(maxWidth: .infinity)
+            })
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.accentColor)
+            .cornerRadius(8)
+        } //: VSTACK
+        .padding(32)
+        // MARK: - Step 2 Ignore the built-in safe area at the bottom that covers the area of the keyboard
+        .ignoresSafeArea(.keyboard, edges: .bottom)
+    }
+}
+
+struct StickyBottomButton_Previews: PreviewProvider {
+    static var previews: some View {
+        StickyBottomButton()
+    }
+}
+```
+
+## Preview
+<Image
+    alt="Bobo Banner"
+    src="/images/snippets/sticky-bottom-button/before-after.png"
+    width={1194}
+    height={1302}
+  />
