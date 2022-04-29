@@ -7,7 +7,7 @@ import {
   Flex,
   Stack,
   SimpleGrid,
-  VStack, Box, Spacer, Avatar, Button
+  VStack, Box, Spacer, Avatar, Button, Divider
 } from '@chakra-ui/react'
 import Container from "../components/Container";
 import Skills from "../components/Skills";
@@ -64,7 +64,7 @@ export default function Index({ projects }) {
           as="main"
           spacing={8}
           justifyContent="center"
-          alignItems="flex-start"
+          alignItems="center"
           // m="0 auto 4rem auto"
           // maxWidth="700px"
           px={8}
@@ -72,8 +72,8 @@ export default function Index({ projects }) {
         >
           <Flex
             flexDirection="column"
-            justifyContent="flex-start"
-            alignItems="flex-start"
+            justifyContent="center"
+            alignItems="center"
             maxWidth="700px"
           >
             <Flex
@@ -82,50 +82,56 @@ export default function Index({ projects }) {
               alignItems="center"
               width="100%"
             >
-              <Box>
-                <VStack align="stretch">
-                  <Heading mb={1} transition="transform 125ms ease-in-out" color={accentColor[colorMode]} size="2xl">{welcomeMessage}</Heading>
-                  {/* eslint-disable-next-line react/no-unescaped-entities */}
-                  <Heading mb={1} size="lg" color={secondaryColor[colorMode]}>I'm Azura Sakan Taufik 👋</Heading>
-                </VStack>
-              </Box>
-              <Spacer />
-              <Box>
-                {/*<Image src='/images/azura_profile.jpg' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>*/}
-                <Avatar
-                    size="xl"
-                    name="Azura Sakan Taufik"
-                    src="../images/azura_profile.jpg"
-                    mr={2}
-                />
-              </Box>
+              {/*<Box>*/}
+              {/*  <VStack align="stretch">*/}
+              {/*    <Heading mb={1} transition="transform 125ms ease-in-out" color={accentColor[colorMode]} size="2xl">{welcomeMessage}</Heading>*/}
+              {/*    /!* eslint-disable-next-line react/no-unescaped-entities *!/*/}
+              {/*    <Heading mb={1} size="md" color={secondaryColor[colorMode]}>I'm Azura Sakan Taufik 👋</Heading>*/}
+              {/*    <Text mb={1} size="md" color={secondaryTextColor[colorMode]}>An early bird <span style={{ fontWeight: 'bold' }}>iOS developer</span> focusing in Swift & SwiftUI.</Text>*/}
+              {/*  </VStack>*/}
+              {/*</Box>*/}
+              {/*<Spacer />*/}
+              {/*<Box>*/}
+              {/*  /!*<Image src='/images/azura_profile.jpg' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>*!/*/}
+              {/*  <Avatar*/}
+              {/*      size="xl"*/}
+              {/*      name="Azura Sakan Taufik"*/}
+              {/*      src="../images/azura_profile.jpg"*/}
+              {/*      mr={2}*/}
+              {/*  />*/}
+              {/*</Box>*/}
             </Flex>
             <Stack justify="space-between" spacing="auto" mb={4} direction={{ base: 'row', md: ['column', 'row'] }} >
               {/*<GooglyEyes/>*/}
             </Stack>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>
-              I am a junior iOS Developer who just graduated from Apple Developer Academy Indonesia @ BINUS where I learned the end-to-end process of product development starting from research, design, and development! I also just recently graduated from Universitas Multimedia Nusantara with a Bachelor in Computer Science where I was mainly involved in web, game, and mobile development. I am currently honing my skills in  <span style={{ fontWeight: 'bold' }}>iOS development. </span>
-            </Text>
-            <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>My Skills</Heading>
-            <Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products.</Text>
-            <Skills/>
+            {/*<Text color={secondaryTextColor[colorMode]}>*/}
+            {/*  An early bird <span style={{ fontWeight: 'bold' }}>iOS developer</span> focusing in Swift & SwiftUI.*/}
+            {/*</Text>*/}
+            {/*<Heading as="h3" size="md" py={4} color={textColor[colorMode]}>My Skills</Heading>*/}
+            {/*<Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products. I'm well aware of most technologies on the market regarding front-end development, but <span style={{ fontWeight: 'bold' }}>my current weapons of choice are Swift & SwiftUI!</span></Text>*/}
+            {/*<Skills/>*/}
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>What I've been up to</Heading>
+            {/*<Heading as="h3" size="md" py={4} color={textColor[colorMode]}>What I've been up to</Heading>*/}
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are my featured latest works.</Text>
-            <SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">
-              {
-                projects.map((frontMatter) => {
-                  if (frontMatter.featured === "yes") {
-                    return (<ProjectCard key={frontMatter.title} {...frontMatter}/>)
-                  }
-                })
-              }
-            </SimpleGrid>
+            <Heading mb={2} transition="transform 125ms ease-in-out" color={accentColor[colorMode]} size="2xl">{welcomeMessage}</Heading>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            <Heading mb={2} size="md" color={secondaryColor[colorMode]}>I'm Azura Sakan Taufik 👋</Heading>
+            <Text mb={2} size="md" color={secondaryTextColor[colorMode]} textAlign="center">An early bird <span style={{ fontWeight: 'bold' }}>iOS developer</span> focusing on <span style={{ fontWeight: 'bold' }}>Swift & SwiftUI.</span></Text>
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            <Text mb={2} color={secondaryTextColor[colorMode]} textAlign="center">I love to build things, and always have something I'm working on to sharpen up my skills. </Text>
+            {/*<SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">*/}
+            {/*  {*/}
+            {/*    projects.map((frontMatter) => {*/}
+            {/*      if (frontMatter.featured === "yes") {*/}
+            {/*        return (<ProjectCard key={frontMatter.title} {...frontMatter}/>)*/}
+            {/*      }*/}
+            {/*    })*/}
+            {/*  }*/}
+            {/*</SimpleGrid>*/}
             <NextLink href='projects' passHref>
-              <Button colorScheme='brandSecondary' size='lg' variant='link'>
-                View All Projects
+              <Button colorScheme='brandPrimary' size='md' variant='link'>
+                Click here to see some of my selected works.
               </Button>
             </NextLink>
           </Flex>
