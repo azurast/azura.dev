@@ -26,9 +26,9 @@ export default function Index({ posts }) {
       <Stack
         as="main"
         spacing={8}
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems="flex-start"
-        m="0 auto 4rem auto"
+        m="0 1rem 1rem 1rem"
         maxWidth="700px"
         px={8}
       >

@@ -7,7 +7,8 @@ import {
   Text,
   SimpleGrid,
   Icon,
-  Divider
+  Divider,
+  Spacer
 } from "@chakra-ui/react";
 import {
   SiGithub,
@@ -115,22 +116,25 @@ const Container = ({ children }) => {
       </StickyNav >
       <Flex
         as="main"
-        justifyContent="center"
+        justifyContent="flex-start"
         flexDirection="column"
         bg={bgColor[colorMode]}
         color={color[colorMode]}
-        px={[0, 4, 4]}
-        mt={[4, 8, 8]}
-        // css={{
-        //   backgroundImage:'radial-gradient(#ddd 1px, transparent 1px), radial-gradient(#ddd 1px, transparent 1px)',
-        //   backgroundPosition: '0 0, 25px 25px',
-        //   backgroundAttachment: 'fixed',
-        //   backgroundSize: '50px 50px',
-        //   overflowX: 'hidden'
-        // }}
+        // px={[0, 4, 4]}
+        // mt={[4, 8, 8]}
+        css={{
+          flex: '1 1 auto',
+          position: 'relative',
+          minWidth: '1px',
+          maxWidth: '700px',
+          margin: '0 auto',
+          zIndex: '1',
+          width: '100%'
+        }}
       >
         {children}
       </Flex>
+      {/*<Spacer/>*/}
       <Footer
         flexDirection="column"
         justifyContent="space-evenly"
@@ -189,7 +193,7 @@ const Container = ({ children }) => {
             </NextLink>
           </Box>
           <Box
-              key="medium"
+              key="polywork"
               _hover={{
                 transform: "scale(1.01)",
                 cursor: "pointer",
