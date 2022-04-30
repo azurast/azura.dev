@@ -42,10 +42,10 @@ export default function Index({ posts }) {
       <Container>
         <Stack
           as="main"
-          spacing={6}
-          justifyContent="center"
+          spacing={8}
+          justifyContent="flex-start"
           alignItems="flex-start"
-          m="0 auto 4rem auto"
+          m="0 1rem 1rem 1rem"
           maxWidth="700px"
           px={8}
         >

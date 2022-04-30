@@ -7,7 +7,7 @@ import {
   Flex,
   Stack,
   SimpleGrid,
-  VStack, Box, Spacer, Avatar, Button
+  VStack, Box, Spacer, Avatar, Button, Divider, Center, HStack
 } from '@chakra-ui/react'
 import Container from "../components/Container";
 import Skills from "../components/Skills";
@@ -15,6 +15,7 @@ import theme from "../styles/theme";
 import ProjectCard from "../components/ProjectCard";
 import {getAllFilesFrontMatter} from "../lib/mdx";
 import NextLink from "next/link";
+import {ArrowForwardIcon} from "@chakra-ui/icons";
 // import GooglyEyes from "../components/GooglyEyes";
 
 export default function Index({ projects }) {
@@ -93,39 +94,23 @@ export default function Index({ projects }) {
               <Box>
                 {/*<Image src='/images/azura_profile.jpg' width={{ base: 50, sm: 100, md: 100, lg: 100 }} height={{ base: 50, sm: 100, md: 100, lg: 100 }} layout="responsive" alt="azura memoji"/>*/}
                 <Avatar
-                    size="xl"
-                    name="Azura Sakan Taufik"
-                    src="../images/azura_profile.jpg"
-                    mr={2}
+                  size="xl"
+                  name="Azura Sakan Taufik"
+                  src="../images/azura_profile.jpg"
+                  mr={2}
                 />
               </Box>
             </Flex>
             <Stack justify="space-between" spacing="auto" mb={4} direction={{ base: 'row', md: ['column', 'row'] }} >
               {/*<GooglyEyes/>*/}
             </Stack>
+            <Text color={secondaryTextColor[colorMode]} mb={2}>🇮🇩 Jakarta, ID</Text>
+            <Text color={secondaryTextColor[colorMode]} mb={2}>An early bird iOS Software Engineer whose primary focus is on SwiftUI. Currently working at Kompas.id</Text>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>
-              I am a junior iOS Developer who just graduated from Apple Developer Academy Indonesia @ BINUS where I learned the end-to-end process of product development starting from research, design, and development! I also just recently graduated from Universitas Multimedia Nusantara with a Bachelor in Computer Science where I was mainly involved in web, game, and mobile development. I am currently honing my skills in  <span style={{ fontWeight: 'bold' }}>iOS development. </span>
-            </Text>
-            <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>My Skills</Heading>
-            <Text color={secondaryTextColor[colorMode]}>Through my studies, I learned a lot of fundamental concepts of computer science and app development. I like to build and apply these knowledge into tangible products.</Text>
-            <Skills/>
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Heading as="h3" size="md" py={4} color={textColor[colorMode]}>What I've been up to</Heading>
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            <Text color={secondaryTextColor[colorMode]}>I love to build things, and always have something I'm working on to sharpen up my skills. Here are my featured latest works.</Text>
-            <SimpleGrid columns={[1, null,2]} gap={6} m="1.5rem 0">
-              {
-                projects.map((frontMatter) => {
-                  if (frontMatter.featured === "yes") {
-                    return (<ProjectCard key={frontMatter.title} {...frontMatter}/>)
-                  }
-                })
-              }
-            </SimpleGrid>
+            <Text color={secondaryTextColor[colorMode]} mb={2} fontSize="xs">Sorry if this page is a bit empty! It's a work in progress🤭.</Text>
             <NextLink href='projects' passHref>
-              <Button colorScheme='brandSecondary' size='lg' variant='link'>
-                View All Projects
+              <Button colorScheme='brandPrimary' size='md' variant='link' rightIcon={<ArrowForwardIcon/>}>
+                Click here to discover some of my work
               </Button>
             </NextLink>
           </Flex>
