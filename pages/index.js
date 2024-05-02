@@ -36,7 +36,7 @@ export default function Index({ projects }) {
   useEffect(() => {
     const interval = setInterval(() => changeText(), 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, []);  
 
   const changeText = () => {
     setWelcomeMessage(arrayOfMessages[counter]);
@@ -105,7 +105,7 @@ export default function Index({ projects }) {
               {/*<GooglyEyes/>*/}
             </Stack>
             <Text color={secondaryTextColor[colorMode]} mb={2}>🇮🇩 Jakarta, ID</Text>
-            <Text color={secondaryTextColor[colorMode]} mb={2}>An early bird iOS Software Engineer whose primary focus is on SwiftUI. I'm Currently building the iOS side of <NextLink href="https://apps.apple.com/id/app/kompas-id-baca-berita-lengkap/id1242195037">Kompas.id</NextLink></Text>
+            <Text color={secondaryTextColor[colorMode]} mb={2}>An early bird iOS Software Engineer whose primary focus is on SwiftUI. I&apos;m Currently building the iOS side of <NextLink href="https://apps.apple.com/id/app/kompas-id-baca-berita-lengkap/id1242195037">Kompas.id</NextLink></Text>
             {/* eslint-disable-next-line react/no-unescaped-entities */}
             <Text color={secondaryTextColor[colorMode]} mb={2}>This is my portfolio page but you can find my digital garden where I try my best to learn in public on <NextLink href="https://thought-oasis.me">thought-oasis.me</NextLink></Text>
             <NextLink href='projects' passHref>

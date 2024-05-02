@@ -5,18 +5,6 @@
   </url>
 
   <url>
-    <loc>https://azura.dev/blog</loc>
-  </url>
-
-  <url>
-    <loc>https://azura.dev/projects</loc>
-  </url>
-
-  <url>
-    <loc>https://azura.dev/about</loc>
-  </url>
-
-  <url>
     <loc>https://azura.dev/blog/hackerrank-2d-array-day-1</loc>
   </url>
 
@@ -46,5 +34,9 @@
 
   <url>
     <loc>https://azura.dev/projects/volve</loc>
+  </url>
+
+  <url>
+    <loc>https://azura.dev/snippets/sticky-bottom-button</loc>
   </url>
 </urlset>
