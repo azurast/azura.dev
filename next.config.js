@@ -1,6 +1,6 @@
 const withMDX = require('@next/mdx')()
 
-const CSP =  `
+const CSP = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com vitals.vercel-insights.com;
   child-src *.youtube.com *.google.com *.twitter.com;
@@ -9,20 +9,20 @@ const CSP =  `
   img-src * blob: data:;
   media-src 'none';
   connect-src *;
-`
+`;
 
 module.exports = withMDX({
   reactStrictMode: true,
   webpack: (config, { isServer }) => {
     // Custom webpack configuration goes here
-    return config
+    return config;
   },
   images: {
     domains: [
       'images.unsplash.com'
     ],
   },
-  headers: async () => {
+  async headers() {
     return [
       {
         source: '/(.*)?',
@@ -37,6 +37,6 @@ module.exports = withMDX({
           }
         ],
       },
-    ]
+    ];
   },
-})
+});
